@@ -1,20 +1,12 @@
-import { DocumentsTable } from "@/components/admin/documents-table";
-import { IngestionLog } from "@/components/admin/ingestion-log";
-
 export default function AdminPage() {
+  // TODO: Wire this page to document and ingestion components after the data
+  // model and admin API routes exist.
   return (
-    <main className="mx-auto flex min-h-screen max-w-6xl flex-col gap-6 px-6 py-8">
-      <section>
-        <h1 className="text-2xl font-semibold tracking-tight">Admin Console</h1>
-        <p className="text-muted-foreground">
-          Document ingestion and knowledge-base management placeholders.
-        </p>
-      </section>
-
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-        <DocumentsTable />
-        <IngestionLog />
-      </div>
+    <main className="p-6">
+      <h1 className="text-2xl font-semibold">Admin</h1>
+      <p className="mt-2 text-muted-foreground">
+        TODO: Add document management after you create the Supabase schema.
+      </p>
     </main>
   );
 }

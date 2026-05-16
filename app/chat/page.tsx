@@ -1,11 +1,11 @@
-import { ChatBox } from "@/components/chat/chat-box";
-import { SourcePanel } from "@/components/chat/source-panel";
-
 export default function ChatPage() {
+  // TODO: Wire this page to your chat component after /api/chat is implemented.
   return (
-    <main className="mx-auto grid min-h-screen max-w-6xl gap-6 px-6 py-8 lg:grid-cols-[minmax(0,1fr)_320px]">
-      <ChatBox />
-      <SourcePanel />
+    <main className="p-6">
+      <h1 className="text-2xl font-semibold">Chat</h1>
+      <p className="mt-2 text-muted-foreground">
+        TODO: Add chat UI after you build retrieval and generation.
+      </p>
     </main>
   );
 }
