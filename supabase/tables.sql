@@ -11,10 +11,10 @@ CREATE DOMAIN file_type_dom AS VARCHAR(15)
 CHECK ( VALUE IN ('pdf', 'csv', 'txt'));
 
 CREATE DOMAIN doc_status_dom AS VARCHAR(15)
-CHECK ( VALUE IN ('pending', 'processing', 'ready', 'failed'));
+CHECK ( VALUE IN ('Pending', 'Processing', 'Ready', 'Failed'));
 
 CREATE DOMAIN ingestion_status_dom AS VARCHAR(15)
-CHECK ( VALUE IN ('queued', 'processing', 'complete', 'failed'));
+CHECK ( VALUE IN ('Queued', 'Processing', 'Complete', 'Failed'));
 
 
 CREATE TABLE DOCUMENTS(

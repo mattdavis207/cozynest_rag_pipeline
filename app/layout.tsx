@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { NavigationMenuComp } from "./nav-menu";
 
 export const metadata: Metadata = {
   title: "CozyNest RAG Pipeline",
@@ -13,7 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans">{children}</body>
+      <body className="min-h-screen bg-background font-sans text-foreground">
+        <NavigationMenuComp />
+        <div className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
