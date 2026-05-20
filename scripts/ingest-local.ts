@@ -1,6 +1,6 @@
-import { extractCSV } from "@/lib/ingest/extract-csv";
-import { extractPDF } from "@/lib/ingest/extract-pdf";
-import { extractTXT } from "@/lib/ingest/extract-txt";
+import { extractCSVLocal } from "@/lib/ingest/extract-csv";
+import { extractPDFLocal } from "@/lib/ingest/extract-pdf";
+import { extractTXTLocal } from "@/lib/ingest/extract-txt";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { SupabaseClient } from "@supabase/supabase-js";
 import { config } from "dotenv";
@@ -13,7 +13,7 @@ config({ path: ".env.local" });
 const fileNames = ['product_descriptions.txt', 'cozynest_products.csv', 
     'return_policy.pdf', 'shipping_faq.pdf'] as const 
 
-const parsers = {'csv': extractCSV, 'pdf': extractPDF, 'txt': extractTXT};
+const parsers = {'csv': extractCSVLocal, 'pdf': extractPDFLocal, 'txt': extractTXTLocal};
 
 const supabase: SupabaseClient = createSupabaseServerClient();
 

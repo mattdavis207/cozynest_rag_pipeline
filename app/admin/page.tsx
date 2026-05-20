@@ -1,9 +1,17 @@
+"use client"
 
 import { DocumentIngestion } from "@/components/admin/document-ingestion";
+import { useState } from "react";
 
 export default function AdminPage() {
-  // TODO: Wire this page to document and ingestion components after the data
-  // model and admin API routes exist.
+
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  // rerenders all components on ingestion
+  function refreshAdminData(){
+    setRefreshKey((key) => key + 1);
+  }
+
   return (
     <main>
       <h1 className="text-2xl font-semibold">Admin</h1>
@@ -11,7 +19,7 @@ export default function AdminPage() {
         TODO: Add document management after you create the Supabase schema.
       </p>
 
-      <DocumentIngestion/>
+      <DocumentIngestion onIngested={refreshAdminData}/>
 
     </main>
   );
