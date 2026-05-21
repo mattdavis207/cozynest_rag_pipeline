@@ -11,6 +11,18 @@ export type ExtractedDocument = {
   metadata: Record<string, unknown>;
 };
 
+export type DocumentRow = {
+  doc_id: number;
+  title: string;
+  source_type: SourceType;
+  source_uri: string;
+  content_hash: string;
+  status: DocumentStatus;
+  metadata: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+};
+
 export type ParsedCsvRow = Record<string, string>;
 
 export type DocumentChunk = {

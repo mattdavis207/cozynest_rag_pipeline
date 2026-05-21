@@ -1,7 +1,3 @@
-// TODO: Implement Gemini embedding calls.
-// Add batching, retry behavior, and clear error handling once the ingestion
-// pipeline is ready.
-
 import { GoogleGenAI } from "@google/genai";
 
 

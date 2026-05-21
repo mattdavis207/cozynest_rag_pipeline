@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Button } from "../ui/button";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { UploadCloud } from "lucide-react";
 
 type DocumentIngestionProps = {
@@ -18,6 +18,7 @@ export function DocumentIngestion({ onIngested }: DocumentIngestionProps){
 
     const [files, setFiles]= useState<File[]>([]);
     const [isImporting, setIsImporting] = useState(false);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     function handleFileChange(event: React.ChangeEvent<HTMLInputElement>){
         const selectedFiles = Array.from(event.target.files ?? []);
@@ -51,6 +52,11 @@ export function DocumentIngestion({ onIngested }: DocumentIngestionProps){
             console.log(result.status);
             
             setFiles([]);
+
+            if (fileInputRef.current) {
+                fileInputRef.current.value = "";
+              }
+
             onIngested();
 
         } catch (err){
@@ -64,7 +70,7 @@ export function DocumentIngestion({ onIngested }: DocumentIngestionProps){
         <div className="space-y-4">
             <Field>
                 <FieldLabel htmlFor="document">Document</FieldLabel>
-                    <Input id="document" type="file" multiple accept=".csv,.pdf,.txt" onChange={handleFileChange}/>
+                    <Input id="document" type="file" multiple accept=".csv,.pdf,.txt" onChange={handleFileChange} ref={fileInputRef} />
                 <FieldDescription>Select documents to upload. (csv, pdf, txt)</FieldDescription>
             </Field>
 

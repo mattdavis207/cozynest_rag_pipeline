@@ -13,10 +13,13 @@ importers:
         version: 1.4.1(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@google/genai':
         specifier: latest
-        version: 2.2.0(@modelcontextprotocol/sdk@1.29.0(zod@3.25.76))
+        version: 2.2.0(@modelcontextprotocol/sdk@1.29.0(zod@4.4.3))
       '@supabase/supabase-js':
         specifier: latest
         version: 2.105.4
+      '@tanstack/react-table':
+        specifier: ^8.21.3
+        version: 8.21.3(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -56,6 +59,9 @@ importers:
       ws:
         specifier: ^8.20.1
         version: 8.20.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
     devDependencies:
       '@types/node':
         specifier: latest
@@ -958,6 +964,17 @@ packages:
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
+
+  '@tanstack/react-table@8.21.3':
+    resolution: {integrity: sha512-5nNMTSETP4ykGegmVkhjcS8tTLW6Vl4axfEGQN3v0zdHYbK4UfoqfPChclTrJ4EoK9QynqAu9oUf8VEmrpZ5Ww==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+
+  '@tanstack/table-core@8.21.3':
+    resolution: {integrity: sha512-ldZXEhOBb8Is7xLs01fR3YEc3DERiz5silj8tnGkFZytt1abEvl/GhUmCE0PMLaMPTa3Jk4HbKmRlHmu+gCftg==}
+    engines: {node: '>=12'}
 
   '@ts-morph/common@0.27.0':
     resolution: {integrity: sha512-Wf29UqxWDpc+i61k3oIOzcUfQt79PIT9y/MWfAGlrkjg6lBC1hwDECLXPVJAhWjiGbfBCxZd65F/LIZF3+jeJQ==}
@@ -3763,14 +3780,14 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@google/genai@2.2.0(@modelcontextprotocol/sdk@1.29.0(zod@3.25.76))':
+  '@google/genai@2.2.0(@modelcontextprotocol/sdk@1.29.0(zod@4.4.3))':
     dependencies:
       google-auth-library: 10.6.2
       p-retry: 4.6.2
       protobufjs: 7.5.8
       ws: 8.20.1
     optionalDependencies:
-      '@modelcontextprotocol/sdk': 1.29.0(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.29.0(zod@4.4.3)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -3961,6 +3978,29 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@modelcontextprotocol/sdk@1.29.0(zod@4.4.3)':
+    dependencies:
+      '@hono/node-server': 1.19.14(hono@4.12.18)
+      ajv: 8.20.0
+      ajv-formats: 3.0.1(ajv@8.20.0)
+      content-type: 1.0.5
+      cors: 2.8.6
+      cross-spawn: 7.0.6
+      eventsource: 3.0.7
+      eventsource-parser: 3.0.8
+      express: 5.2.1
+      express-rate-limit: 8.5.2(express@5.2.1)
+      hono: 4.12.18
+      jose: 6.2.3
+      json-schema-typed: 8.0.2
+      pkce-challenge: 5.0.1
+      raw-body: 3.0.2
+      zod: 4.4.3
+      zod-to-json-schema: 3.25.2(zod@4.4.3)
+    transitivePeerDependencies:
+      - supports-color
+    optional: true
+
   '@mswjs/interceptors@0.41.9':
     dependencies:
       '@open-draft/deferred-promise': 2.2.0
@@ -4147,6 +4187,14 @@ snapshots:
   '@swc/helpers@0.5.15':
     dependencies:
       tslib: 2.8.1
+
+  '@tanstack/react-table@8.21.3(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+    dependencies:
+      '@tanstack/table-core': 8.21.3
+      react: 19.2.6
+      react-dom: 19.2.6(react@19.2.6)
+
+  '@tanstack/table-core@8.21.3': {}
 
   '@ts-morph/common@0.27.0':
     dependencies:
@@ -6896,6 +6944,11 @@ snapshots:
   zod-to-json-schema@3.25.2(zod@3.25.76):
     dependencies:
       zod: 3.25.76
+
+  zod-to-json-schema@3.25.2(zod@4.4.3):
+    dependencies:
+      zod: 4.4.3
+    optional: true
 
   zod-validation-error@4.0.2(zod@4.4.3):
     dependencies:
