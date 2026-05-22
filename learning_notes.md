@@ -1,3 +1,47 @@
+# General React/Javascript/Typescript Notes
+
+
+### For solving typescript null/unknown value type errors
+- Backend pipeline values:
+validate and throw if missing
+
+```
+const embedding = response.embeddings?.[0]?.values;
+
+if (!embedding) {
+  throw new Error("Missing embedding");
+}
+
+// From here down, TypeScript knows embedding is number[]
+await retrieveRelevantChunks(embedding);
+```
+
+- Frontend display values:
+allow null and render fallback
+```
+type LogRow = {
+  finished_at: string | null;
+};
+
+{log.finished_at ? formatDate(log.finished_at) : "Not finished"}
+```
+
+Good for UI strings:
+```
+const errorMessage = log.error_message ?? "None";
+```
+
+For arrays/json, use zod or some other schema validator
+```
+const parsed = documentRowSchema.parse(json);
+```
+
+- Types:
+only use ? if the property can really be absent
+only use | null if the DB can really return null
+
+---
+
 # RAG Pipeline Reference Notes
 This file will include all the relevant details I've learned about RAG throughout building this project.
 
@@ -90,3 +134,18 @@ Vector Dimensionality Tradeoffs:
 - Largest storage/index cost
 - Slowest searches
 - Usually overkill for a first e-commerce support RAG project
+
+
+---
+## Postgresql Vector Similarity Operations
+
+Using different postgresql syntax, can use many vector distance functions including
+
+- <-> - L2 distance
+- <#> - (negative) inner product
+- <=> - cosine distance
+- <+> - L1 distance
+- <~> - Hamming distance (binary vectors)
+- <%> - Jaccard distance (binary vectors)
+
+In this project, I ended up using cosine similarity as a simple use case but I'll be able to create more complex functions using different comparison methods in the future as well as HNSW or IVFFLAT indexes for different storage/speed tradeoffs.

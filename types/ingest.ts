@@ -35,6 +35,18 @@ export type DocumentChunk = {
   embedding_model: string,
 }
 
+export type MatchingDocumentChunk = {
+  document_id: number;
+  chunk_index: number;
+  content: string;
+  token_count: number;
+  metadata: Record<string, unknown>;
+  title: string;
+  source_type: SourceType;
+  source_uri: string;
+  similarity_score: number;
+};
+
 export type IngestionLog = {
   ingestion_id?: number;
   document_id?: number | null;

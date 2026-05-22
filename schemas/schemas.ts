@@ -79,3 +79,10 @@ export const ingestionLogTableRowSchema = ingestionLogRowSchema.pick({
 export const ingestionLogTableRowsSchema = z.array(ingestionLogTableRowSchema);
 
 export type IngestionLogTableRow = z.infer<typeof ingestionLogTableRowSchema>;
+
+// ----------------------------------------
+
+export const userMessageSchema = z.object({
+  message: z.string().trim().min(1).max(2000),
+});
+

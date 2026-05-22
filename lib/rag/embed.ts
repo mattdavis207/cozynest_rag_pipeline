@@ -20,8 +20,6 @@ export async function embedTexts(chunks: string[]) {
 
   const embeddings = response.embeddings?.map((embedding) => embedding.values);
 
-  console.log("embeddings", embeddings, embeddings?.length);
-
   if (!embeddings || embeddings.some((embedding) => embedding?.length !== 768)) {
     throw new Error("Gemini returned one or more invalid embeddings");
   }
