@@ -9,7 +9,11 @@ import {
 } from '@/schemas/schemas';
 
 
-export function DocumentsTable() {
+type DocumentsTableProps = {
+  refreshKey: number;
+};
+
+export function DocumentsTable({ refreshKey }: DocumentsTableProps) {
   // TODO: Fetch document metadata from /api/documents and render real rows.
   // Useful columns: title, source type, status, chunk count, updated date.
 
@@ -49,7 +53,7 @@ export function DocumentsTable() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchDocuments()
-  }, [fetchDocuments]);
+  }, [fetchDocuments, refreshKey]);
 
 
   return (

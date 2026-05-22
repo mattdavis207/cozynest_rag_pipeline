@@ -1,6 +1,5 @@
 import Groq from "groq-sdk";
-import { MatchingDocumentChunk } from "@/types/ingest";
-import { ContextDocument } from "./rag/prompt";
+import { SupportPrompt } from "./rag/prompt";
 
 
 function createGroqClient() {
@@ -8,36 +7,25 @@ function createGroqClient() {
 }
 
 
-export function callGroqChatCompletion(message: string, data: MatchingDocumentChunk[], documents: ContextDocument[]){
+export async function callGroqChatCompletion(prompt: SupportPrompt){
   const groq = createGroqClient();
 
   try {
-    const response = groq.chat.completions.create({
-      messages: [
-        // Set an optional system message. This sets the behavior of the
-        // assistant and can be used to provide specific instructions for
-        // how it should behave throughout the conversation.
-        {
-          role: "system",
-          content: "You are a helpful assistant.",
-        },
-        // Set a user message for the assistant to respond to.
-        {
-          role: "user",
-          content: "Explain the importance of fast language models",
-        },
-      ],
+    const response = await groq.chat.completions.create({
+      messages: prompt.messages,
       model: "openai/gpt-oss-20b",
       max_completion_tokens: 500,
       stream: false,
-      citation_options: 'enabled', // for showing sources used in the response
-      documents: documents as ContextDocument[]
     });
-  } catch (error){
 
+    const result = response.choices[0]?.message?.content;
+
+    return { result }; 
+
+  } catch (error){
+    console.error("Failed to fetch Groq chat completion.", error);
   }
 
 }
-
 
 

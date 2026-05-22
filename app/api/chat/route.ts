@@ -1,10 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import { userMessageSchema } from "@/schemas/schemas";
 import { embedTexts } from "@/lib/rag/embed";
-import { trim } from "zod";
 import { retrieveRelevantChunks } from "@/lib/rag/retrieve";
 import { buildSupportPrompt } from "@/lib/rag/prompt";
+import { callGroqChatCompletion } from "@/lib/groq";
 
+
+// extract sourceId (documentId and chunkIndex) from Groq response
+function extractSourceIds(answer: string) {
+  const sourceCitationRegex = /[\[【]source:\s*\d+-\d+[\]】]/g;
+  const matches = answer.match(sourceCitationRegex) ?? [];
+
+  return matches.map((match) => {
+    const sourceId = match.replace(/[\[【]source:\s*|[\]】]/g, "");
+    const [documentId, chunkIndex] = sourceId.split("-").map(Number);
+
+    return {
+      id: sourceId,
+      document_id: documentId,
+      chunk_index: chunkIndex,
+    };
+  });
+}
 
 export async function POST(request: NextRequest) {
   // TODO: Build the chat pipeline here:
@@ -51,14 +68,33 @@ export async function POST(request: NextRequest) {
   // get similar embeddings from vectors in db
   const data = await retrieveRelevantChunks(message_embedding[0]);
 
+  console.log("chunks retrieved: ", data);
+
   // get response from groq using the similar chunks found from retrieval
-  const response = buildSupportPrompt(trimmedMessage, data);
+  const prompt = buildSupportPrompt(trimmedMessage, data);
 
+  const response = await callGroqChatCompletion(prompt);
 
-
+  // Extract used sources from the raw response before removing citation text.
+  const rawAnswer = response?.result ?? "";
+  const citedSourceIds = extractSourceIds(rawAnswer);
+  const citedSources = prompt.sources.filter((source) =>
+    citedSourceIds.some((citedSource) => citedSource.id === source.id),
+  );
+  const answer = rawAnswer.replace(/\s*[\[【]source:\s*\d+-\d+[\]】]/g, "").trim();
+  
+  console.log(
+    {
+      answer,
+      sources: citedSources,
+    },
+    { status: 200 })
 
   return NextResponse.json(
-    { error: "TODO: implement chat route" },
-    { status: 501 },
+    {
+      answer,
+      sources: citedSources,
+    },
+    { status: 200 },
   );
 }

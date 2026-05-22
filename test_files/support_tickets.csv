@@ -1,0 +1,21 @@
+ticket_id,topic,status,priority,summary
+TICKET0001,Damaged packaging,Pending,High,Refund has not appeared on bank statement yet.
+TICKET0002,Delayed shipment,Open,Medium,Customer reported damaged comforter packaging.
+TICKET0003,Color mismatch,Resolved,Low,Customer reported damaged comforter packaging.
+TICKET0004,Color mismatch,Pending,Low,Refund has not appeared on bank statement yet.
+TICKET0005,Color mismatch,Resolved,High,Customer reported damaged comforter packaging.
+TICKET0006,Return request,Pending,Low,Customer reported damaged comforter packaging.
+TICKET0007,Refund status inquiry,Pending,Low,Customer reported damaged comforter packaging.
+TICKET0008,Refund status inquiry,Resolved,High,Tracking number has not updated in 5 days.
+TICKET0009,Wrong item received,Pending,High,Refund has not appeared on bank statement yet.
+TICKET0010,Return request,Open,High,Tracking number has not updated in 5 days.
+TICKET0011,Return request,Pending,Low,Customer reported damaged comforter packaging.
+TICKET0012,Wrong item received,Pending,High,Tracking number has not updated in 5 days.
+TICKET0013,Damaged packaging,Open,Low,Customer reported damaged comforter packaging.
+TICKET0014,Delayed shipment,Resolved,Medium,Customer reported damaged comforter packaging.
+TICKET0015,Return request,Open,High,Customer reported damaged comforter packaging.
+TICKET0016,Delayed shipment,Open,High,Refund has not appeared on bank statement yet.
+TICKET0017,Refund status inquiry,Open,Medium,Customer reported damaged comforter packaging.
+TICKET0018,Refund status inquiry,Resolved,High,Tracking number has not updated in 5 days.
+TICKET0019,Wrong item received,Open,Medium,Refund has not appeared on bank statement yet.
+TICKET0020,Damaged packaging,Resolved,Medium,Refund has not appeared on bank statement yet.

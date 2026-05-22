@@ -46,7 +46,11 @@ function getStatusBadgeStyles(status: IngestionLogTableRow["status"]) {
   return "bg-amber-100 text-amber-800 ring-amber-200";
 }
 
-export function IngestionLog() {
+type IngestionLogProps = {
+  refreshKey: number;
+};
+
+export function IngestionLog({ refreshKey }: IngestionLogProps) {
   const [data, setData] = useState<IngestionLogTableRow[]>([]);
 
   const fetchIngestionLogs = useCallback(async () => {
@@ -79,7 +83,7 @@ export function IngestionLog() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchIngestionLogs();
-  }, [fetchIngestionLogs]);
+  }, [fetchIngestionLogs, refreshKey]);
 
   return (
     <Card className="w-full">

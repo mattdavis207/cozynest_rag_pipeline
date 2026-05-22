@@ -1,11 +1,12 @@
 "use client"
 
 import { useState } from "react";
-import { ChatUI, type ChatMessage } from "@/components/chat/chat-ui";
+import { ChatSource, ChatUI, type ChatMessage } from "@/components/chat/chat-ui";
 
 export default function ChatPage() {
   
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [sources, setSources] = useState<ChatSource[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -14,6 +15,7 @@ export default function ChatPage() {
       ...currentMessages,
       {
         id: crypto.randomUUID(),
+        avatar: undefined,
         role: "self",
         content: message,
         createdAt: new Date(),
@@ -21,6 +23,7 @@ export default function ChatPage() {
       },
     ]);
     setInput("");
+    setSources([]);
 
     try {
       
@@ -42,12 +45,15 @@ export default function ChatPage() {
         ...currentMessages,
         {
           id: crypto.randomUUID(),
+          avatar: undefined,
           role: "system",
-          content: result.message,
+          content: result.answer,
           createdAt: new Date(),
           type: "message",
         },
       ]);
+
+      setSources(result.sources);
 
     } catch (error) {
       console.error('Error:', error);
@@ -68,6 +74,7 @@ export default function ChatPage() {
         messages={messages}
         input={input}
         isLoading={isLoading}
+        sources={sources}
         onInputChange={setInput}
         onSubmit={handleSubmit}
       />

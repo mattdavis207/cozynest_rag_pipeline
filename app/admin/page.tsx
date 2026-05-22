@@ -42,7 +42,7 @@ export default function AdminPage() {
                 Current document records stored in Supabase.
               </p>
             </div>
-            <DocumentsTable />
+            <DocumentsTable refreshKey={refreshKey} />
           </div>
         </div>
 
@@ -54,7 +54,7 @@ export default function AdminPage() {
             </p>
           </div>
           <div className="max-h-[calc(100vh-14rem)] overflow-y-auto pr-2">
-            <IngestionLog />
+            <IngestionLog refreshKey={refreshKey} />
           </div>
         </aside>
       </section>

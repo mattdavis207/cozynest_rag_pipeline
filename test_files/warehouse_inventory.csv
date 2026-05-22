@@ -1,0 +1,16 @@
+inventory_id,product_name,warehouse_location,quantity_available,inventory_status
+INV0001,Cooling Pillow,TX Warehouse,235,In Stock
+INV0002,Weighted Blanket,TX Warehouse,178,Backordered
+INV0003,Sherpa Throw,TX Warehouse,136,Low Stock
+INV0004,Weighted Blanket,TX Warehouse,203,Backordered
+INV0005,Cooling Pillow,PA Warehouse,67,Low Stock
+INV0006,Velvet Curtains,PA Warehouse,187,Backordered
+INV0007,Weighted Blanket,NJ Warehouse,183,In Stock
+INV0008,Cooling Pillow,PA Warehouse,7,Backordered
+INV0009,Cooling Pillow,NJ Warehouse,195,Backordered
+INV0010,Cooling Pillow,PA Warehouse,134,Low Stock
+INV0011,Sherpa Throw,NJ Warehouse,31,Backordered
+INV0012,Sherpa Throw,PA Warehouse,236,Backordered
+INV0013,Sherpa Throw,TX Warehouse,139,Backordered
+INV0014,Sherpa Throw,NJ Warehouse,12,Backordered
+INV0015,Velvet Curtains,PA Warehouse,187,In Stock
