@@ -26,7 +26,7 @@ Upload -> Extract -> Chunk -> Embed -> Store -> Retrieve -> Prompt -> Answer + S
 
 ### Video Walkthrough
 
-[Watch the CozyNest RAG demo video](https://github.com/mattdavis207/cozynest_rag_pipeline/blob/main/public/demo/Cozynest_RAG_Demo_Video.mp4)
+[Watch the CozyNest RAG demo video](public/demo/Cozynest_RAG_Demo_Video.mp4)
 
 ### Screenshots
 
